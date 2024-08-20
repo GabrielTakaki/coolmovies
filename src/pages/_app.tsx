@@ -8,6 +8,7 @@ import { EnhancedStore } from "@reduxjs/toolkit";
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { COLOR_TOKENS } from "../consts/design-system/global-tokens/colors";
+import Layout from "../components/layout";
 
 const theme = createTheme({
   palette: {
@@ -41,7 +42,9 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
       <ReduxProvider store={store}>
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </ReduxProvider>
     </>
