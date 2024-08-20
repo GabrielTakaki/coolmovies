@@ -1,23 +1,13 @@
-import { gql } from '@apollo/client';
-import { Epic, StateObservable } from 'redux-observable';
-import { Observable } from 'rxjs';
-import { filter, map, switchMap } from 'rxjs/operators';
-import { RootState } from '../../store';
-import { EpicDependencies } from '../../types';
-import { actions, SliceAction } from './slice';
+import { gql } from "@apollo/client";
+import { Epic, StateObservable } from "redux-observable";
+import { Observable } from "rxjs";
+import { filter, switchMap } from "rxjs/operators";
+import { RootState } from "../../store";
+import { EpicDependencies } from "../../types";
+import { actions, SliceAction } from "./slice";
 
-export const exampleEpic: Epic = (
-  action$: Observable<SliceAction['increment']>,
-  state$: StateObservable<RootState>
-) =>
-  action$.pipe(
-    filter(actions.increment.match),
-    filter(() => Boolean(state$.value.example.value % 2)),
-    map(() => actions.epicSideEffect())
-  );
-
-export const exampleAsyncEpic: Epic = (
-  action$: Observable<SliceAction['fetch']>,
+export const moviesEpic: Epic = (
+  action$: Observable<SliceAction["fetch"]>,
   state$: StateObservable<RootState>,
   { client }: EpicDependencies
 ) =>
@@ -26,16 +16,16 @@ export const exampleAsyncEpic: Epic = (
     switchMap(async () => {
       try {
         const result = await client.query({
-          query: exampleQuery,
+          query: retrieveData,
         });
-        return actions.loaded({ data: result.data });
+        return actions.normalize({ data: result.data.allMovies });
       } catch (err) {
         return actions.loadError();
       }
     })
   );
 
-const exampleQuery = gql`
+const retrieveData = gql`
   query AllMovies {
     allMovies {
       nodes {
