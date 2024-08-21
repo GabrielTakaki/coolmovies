@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { createEpicMiddleware } from 'redux-observable';
-import { CreateStoreOptions } from '../types';
-import { moviesEpic } from "../slices/entities/epics";
+import { configureStore } from "@reduxjs/toolkit";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { createEpicMiddleware } from "redux-observable";
+import { CreateStoreOptions } from "../types";
+import { fetchMoviesEpic } from "../slices/entities/epics";
 import { moviesReducer } from "../slices";
 
 export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
@@ -14,17 +14,17 @@ export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(epicMiddleware),
     reducer: {
-      movies: moviesReducer,
+      data: moviesReducer,
     },
   });
 
-  epicMiddleware.run(moviesEpic);
+  epicMiddleware.run(fetchMoviesEpic);
 
   return createdStore;
 };
 
-export type RootState = ReturnType<ReturnType<typeof createStore>['getState']>;
-export type AppDispatch = ReturnType<typeof createStore>['dispatch'];
+export type RootState = ReturnType<ReturnType<typeof createStore>["getState"]>;
+export type AppDispatch = ReturnType<typeof createStore>["dispatch"];
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
