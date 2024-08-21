@@ -33,12 +33,8 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const {
-  selectById: selectMovieById,
-  selectAll: selectAllMovies,
-  selectEntities: selectMovieEntities,
-  selectIds: selectMovieIds,
-} = moviesAdapter.getSelectors((state: any) => state.movies);
+export const { selectById: selectMovieById, selectIds: selectMovieIds } =
+  moviesAdapter.getSelectors((state: any) => state.movies);
 export const { actions: movieActions } = moviesSlice;
 export type SliceAction = typeof movieActions;
 
