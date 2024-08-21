@@ -1,13 +1,9 @@
 import React from "react";
 import { Button as MuiButton } from "@mui/material";
-import {
-  COLORS,
-  SIZES,
-  VARIANTS,
-} from "../../consts/design-system/definitions";
+import { SIZES, VARIANTS } from "../../consts/design-system/definitions";
 
 type ButtonProps = {
-  color?: COLORS;
+  color?: "primary" | "secondary" | "info";
   variant?: VARIANTS;
   disabled?: boolean;
   onClick?: () => void;
@@ -15,6 +11,7 @@ type ButtonProps = {
   label: string;
   icon?: React.ReactNode;
   iconPosition?: "trailing" | "leading";
+  type?: "button" | "submit";
 };
 
 function Button({
