@@ -10,6 +10,7 @@ type Props = {
   onChange?: RatingProps["onChange"];
   precision?: RatingProps["precision"];
   size?: SIZES;
+  name?: string;
 };
 
 function Rating(props: Props) {
