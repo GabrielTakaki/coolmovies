@@ -5,7 +5,7 @@ export interface Review {
   title: string;
   movieId: string;
   userReviewerId: string;
-  userByUserReviewerId: {
+  userByUserReviewerId?: {
     id: string;
     name: string;
   };
