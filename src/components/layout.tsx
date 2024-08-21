@@ -2,14 +2,17 @@ import React, { useEffect } from "react";
 import Header from "./general/Header";
 import Box from "./layout/Box";
 import useMediaQuery from "../hooks/useMediaQuery";
-import { moviesActions, useAppDispatch } from "../redux/store";
+import { useAppDispatch } from "../redux/store";
+import { movieActions } from "../redux/slices/moviesSlice";
+import { reviewsActions } from "../redux/slices/reviewsSlice";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
   const isDesktop = useMediaQuery("md");
 
   useEffect(() => {
-    dispatch(moviesActions.fetch());
+    dispatch(movieActions.fetchMovies());
+    dispatch(reviewsActions.fetchReviews());
   }, [dispatch]);
   return (
     <>
