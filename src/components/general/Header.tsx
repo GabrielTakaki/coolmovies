@@ -1,8 +1,8 @@
 import React from "react";
 import FlexRow from "../layout/FlexRow";
-import Text from "../data-display/Text";
 import AnimationIcon from "@mui/icons-material/Animation";
 import { SPACINGS } from "../../consts/design-system/global-tokens/spacings";
+import Link from "../navigation/Link";
 
 function Header() {
   return (
@@ -15,7 +15,9 @@ function Header() {
       gap={SPACINGS.sm}
     >
       <AnimationIcon />
-      <Text variant="h6">Coolmovies</Text>
+      <Link href="/reviews" underline="none" variant="h6">
+        Coolmovies
+      </Link>
     </FlexRow>
   );
 }
