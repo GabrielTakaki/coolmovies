@@ -2,8 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { createEpicMiddleware } from "redux-observable";
 import { CreateStoreOptions } from "../types";
-import { fetchMoviesEpic } from "../slices/entities/epics";
-import { moviesReducer } from "../slices";
+import { rootEpic } from "../epics";
+import moviesReducer from "../slices/moviesSlice";
+import reviewsReducer from "../slices/reviewsSlice";
 
 export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
   const epicMiddleware = createEpicMiddleware({
@@ -14,11 +15,12 @@ export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(epicMiddleware),
     reducer: {
-      data: moviesReducer,
+      movies: moviesReducer,
+      reviews: reviewsReducer,
     },
   });
 
-  epicMiddleware.run(fetchMoviesEpic);
+  epicMiddleware.run(rootEpic);
 
   return createdStore;
 };
