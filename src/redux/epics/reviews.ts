@@ -44,7 +44,7 @@ export const updateReviewEpic: Epic = (
     switchMap(async (action) => {
       try {
         const review = await updateReview(action.payload);
-        return reviewsActions.mergeEntities(review);
+        return reviewsActions.updateOne(review);
       } catch (err) {
         // return reviewsActions.loadError();
       }
