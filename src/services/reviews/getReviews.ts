@@ -21,7 +21,7 @@ const GET_REVIEWS = gql`
   }
 `;
 
-export const getReviews = async (): Promise<Review[]> => {
+export const getReviews = async (): Promise<{ nodes: Review[] }> => {
   const result = await client.query({
     query: GET_REVIEWS,
   });

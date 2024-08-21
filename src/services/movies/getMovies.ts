@@ -28,7 +28,7 @@ const GET_MOVIES = gql`
   }
 `;
 
-export const getMovies = async (): Promise<Movie[]> => {
+export const getMovies = async (): Promise<{ nodes: Movie[] }> => {
   const result = await client.query({
     query: GET_MOVIES,
   });
