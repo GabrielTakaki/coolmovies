@@ -5,6 +5,7 @@ import { CreateStoreOptions } from "../types";
 import { rootEpic } from "../epics";
 import moviesReducer from "../slices/moviesSlice";
 import reviewsReducer from "../slices/reviewsSlice";
+import userReducer from "../slices/userSlice";
 
 export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
   const epicMiddleware = createEpicMiddleware({
@@ -17,6 +18,7 @@ export const createStore = ({ epicDependencies }: CreateStoreOptions) => {
     reducer: {
       movies: moviesReducer,
       reviews: reviewsReducer,
+      user: userReducer,
     },
   });
 
