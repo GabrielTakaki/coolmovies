@@ -53,7 +53,11 @@ function MoviesListItem({ movieId }: { movieId: string }) {
           keyExtractor={(reviewId) => reviewId}
         />
         <FlexRow component="div" alignSelf="end" marginTop={SPACINGS.lg}>
-          <Button label="Add Review" onClick={handleAddReviewClick} />
+          <Button
+            label="Add Review"
+            onClick={handleAddReviewClick}
+            color="secondary"
+          />
         </FlexRow>
       </FlexColumn>
     </FlexRow>
