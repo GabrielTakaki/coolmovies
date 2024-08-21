@@ -1,6 +1,5 @@
 import React from "react";
 import { useAppSelector } from "../../../redux/store";
-import { getReviewById } from "../../../redux/slices/entities/slice";
 import FlexRow from "../../../components/layout/FlexRow";
 import FlexColumn from "../../../components/layout/FlexColumn";
 import Text from "../../../components/data-display/Text";
@@ -8,16 +7,16 @@ import { SPACINGS } from "../../../consts/design-system/global-tokens/spacings";
 import Rating from "../../../components/inputs/Rating";
 import Box from "../../../components/layout/Box";
 import Avatar from "../../../components/data-display/Avatar";
+import { selectReviewById } from "../../../redux/slices/reviewsSlice";
 
 function ReviewListItem({ reviewId }: { reviewId: string }) {
-  const review = useAppSelector((state) => getReviewById(state, reviewId));
+  const review = useAppSelector((state) => selectReviewById(state, reviewId));
 
-  console.log(review);
   if (!review) {
     return null;
   }
   return (
-    <FlexRow component="li" gap={SPACINGS.md} alignItems="center">
+    <FlexRow component="section" gap={SPACINGS.md} alignItems="center">
       <FlexColumn component="main" gap={SPACINGS.xs}>
         <FlexRow component="div" gap={SPACINGS.xs} alignItems="center">
           <Avatar alt="profile" size="medium" />

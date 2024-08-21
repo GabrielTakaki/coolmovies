@@ -1,19 +1,18 @@
 import React from "react";
-import Text from "../../../components/data-display/Text";
 import List from "../../../components/data-display/List";
 import { useAppSelector } from "../../../redux/store";
 import Button from "../../../components/inputs/Button";
-import MoviesListItem from "./MoviesListItem";
 import ReviewsListItem from "./ReviewListItem";
+import { selectReviewIds } from "../../../redux/slices/reviewsSlice";
 
 function ReviewList() {
-  const data = useAppSelector((state) => state.data);
+  const reviewIds = useAppSelector(selectReviewIds);
 
   return (
     <List
       keyExtractor={(item) => item.toString()}
       renderItem={(item) => <ReviewsListItem reviewId={item.toString()} />}
-      data={data.reviews.ids}
+      data={reviewIds}
       renderActions={(item) => (
         <Button
           variant="outlined"
