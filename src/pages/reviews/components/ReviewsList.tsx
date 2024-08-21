@@ -17,6 +17,7 @@ function ReviewList() {
         <Button
           variant="outlined"
           label="Edit"
+          color="secondary"
           onClick={() => console.log(item)}
         />
       )}
