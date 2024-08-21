@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { moviesActions, useAppDispatch } from "../../redux/store";
 import Text from "../../components/data-display/Text";
 import FlexColumn from "../../components/layout/FlexColumn";
-import FlexRow from "../../components/layout/FlexRow";
-import Button from "../../components/inputs/Button";
 import MoviesList from "./components/MoviesList";
 
 function Reviews() {
@@ -15,10 +13,7 @@ function Reviews() {
 
   return (
     <FlexColumn component="section">
-      <FlexRow justifyContent="space-between" component="section">
-        <Text variant="h6">Reviews</Text>
-        <Button label="Add Review" />
-      </FlexRow>
+      <Text variant="h6">Reviews</Text>
       <MoviesList />
     </FlexColumn>
   );
