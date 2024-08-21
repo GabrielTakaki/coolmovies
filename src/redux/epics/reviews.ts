@@ -6,7 +6,7 @@ import { getReviews } from "../../services/reviews/getReviews";
 import { updateReview } from "../../services/reviews/updateReview";
 import { createReview } from "../../services/reviews/createReview";
 
-export const fetchReviewsApic: Epic = (
+export const fetchReviewsEpic: Epic = (
   action$: Observable<SliceAction["fetchReviews"]>
 ) =>
   action$.pipe(

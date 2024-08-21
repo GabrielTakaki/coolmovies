@@ -1,7 +1,7 @@
 import { combineEpics } from "redux-observable";
 import {
   createReviewEpic,
-  fetchReviewsApic,
+  fetchReviewsEpic,
   updateReviewEpic,
 } from "./reviews";
 import { fetchMoviesEpic } from "./movies";
@@ -11,5 +11,5 @@ export const rootEpic = combineEpics(
   createReviewEpic,
   updateReviewEpic,
   fetchMoviesEpic,
-  fetchReviewsApic
+  fetchReviewsEpic
 );
