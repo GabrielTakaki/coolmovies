@@ -5,16 +5,25 @@ import { Provider as ReduxProvider } from "react-redux";
 import Head from "next/head";
 import { createStore } from "../redux/store";
 import { EnhancedStore } from "@reduxjs/toolkit";
-import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { COLOR_TOKENS } from "../consts/design-system/global-tokens/colors";
+import { SYSTEM_COLORS } from "../consts/design-system/global-tokens/colors";
 import Layout from "../components/layout";
+import { client } from "../core/apolloClient";
 
 const theme = createTheme({
   palette: {
-    primary: COLOR_TOKENS.primary,
-    secondary: COLOR_TOKENS.secondary,
-    info: COLOR_TOKENS.info,
+    primary: {
+      main: SYSTEM_COLORS.primary[500],
+      contrastText: SYSTEM_COLORS.neutral[100],
+    },
+    secondary: {
+      main: SYSTEM_COLORS.secondary[500],
+      contrastText: SYSTEM_COLORS.neutral[100],
+    },
+    info: {
+      main: SYSTEM_COLORS.info[500],
+      contrastText: SYSTEM_COLORS.neutral[100],
+    },
   },
 });
 
@@ -22,11 +31,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   const [store, setStore] = useState<EnhancedStore | null>(null);
 
   React.useEffect(() => {
-    const client = new ApolloClient({
-      cache: new InMemoryCache(),
-      uri: "/graphql",
-    });
-
     const store = createStore({ epicDependencies: { client } });
     setStore(store);
   }, []);
