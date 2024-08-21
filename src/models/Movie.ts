@@ -1,5 +1,3 @@
-import { Review } from "./Review";
-
 export interface Movie {
   id: string;
   imgUrl: string;
@@ -7,7 +5,7 @@ export interface Movie {
   nodeId: string;
   releaseDate: string;
   title: string;
-  movieReviewsByMovieId: { nodes: Review[] };
+  movieReviewsByMovieId: { nodes: { id: string }[] };
   userByUserCreatorId: {
     id: string;
     name: string;

@@ -3,6 +3,7 @@ export interface Review {
   id: string;
   rating: number;
   title: string;
+  movieId: string;
   userReviewerId: string;
   userByUserReviewerId: {
     id: string;
