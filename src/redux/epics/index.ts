@@ -5,11 +5,12 @@ import {
   updateReviewEpic,
 } from "./reviews";
 import { fetchMoviesEpic } from "./movies";
+import { createUserEpic } from "./users";
 
 export const rootEpic = combineEpics(
   fetchMoviesEpic,
   createReviewEpic,
   updateReviewEpic,
-  fetchMoviesEpic,
-  fetchReviewsEpic
+  fetchReviewsEpic,
+  createUserEpic
 );
