@@ -17,8 +17,10 @@ type Props = {
   error?: boolean;
   id?: string;
   placeholder?: string;
+  disabled?: boolean;
   helperText?: string;
   icon?: React.ReactNode | string;
+  required?: boolean;
 };
 
 function TextField({ type = "text", icon, ...props }: Props) {
