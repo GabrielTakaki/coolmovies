@@ -12,6 +12,10 @@ const CREATE_REVIEW = gql`
         rating
         userReviewerId
         movieId
+        userByUserReviewerId {
+          id
+          name
+        }
       }
     }
   }
