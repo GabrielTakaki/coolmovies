@@ -15,7 +15,8 @@ type LinkProps = {
   level?: LEVELS;
   weight?: WEIGHTS;
   underline?: "none" | "hover" | "always";
-  href: string;
+  href?: string;
+  onClick?: () => void;
 };
 
 function Link({
@@ -27,16 +28,19 @@ function Link({
   weight = "regular",
   href,
   underline = "hover",
+  onClick,
 }: LinkProps) {
   const textColor = SYSTEM_COLORS[color][level];
   return (
     <MuiLink
       href={href}
+      onClick={onClick}
       underline={underline}
       style={{
         fontWeight: { regular: 400, medium: 500, semibold: 600, bold: 700 }[
           weight
         ],
+        cursor: "pointer",
       }}
       color={textColor}
       variant={variant}
