@@ -20,7 +20,7 @@ function ReviewListItem({ reviewId }: { reviewId: string }) {
       <FlexColumn component="main" gap={SPACINGS.xs}>
         <FlexRow component="div" gap={SPACINGS.xs} alignItems="center">
           <Avatar alt="profile" size="medium" />
-          <Text variant="subtitle2">{review.userByUserReviewerId.name}</Text>
+          <Text variant="subtitle2">{review.userByUserReviewerId?.name}</Text>
         </FlexRow>
         <FlexRow component="div" gap={SPACINGS.xs}>
           <Box marginTop="1.5px" component="div">
