@@ -1,6 +1,6 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../../../../redux/store";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/store";
 import { reviewsActions } from "../../../../../redux/slices/reviewsSlice";
 import FlexColumn from "../../../../../components/layout/FlexColumn";
 import Text from "../../../../../components/data-display/Text";
@@ -11,31 +11,53 @@ import Rating from "../../../../../components/inputs/Rating";
 import TextField from "../../../../../components/inputs/TextField";
 import Button from "../../../../../components/inputs/Button";
 import useForm from "../../../../../hooks/useForm";
-import { Review } from "../../../../../models/Review";
 import { selectMovieById } from "../../../../../redux/slices/moviesSlice";
+import { userActions } from "../../../../../redux/slices/userSlice";
 
 function NewMovieReview() {
   const router = useRouter();
-  const { values, handleChange } = useForm({
-    initialValues: {
-      title: "",
-      body: "",
-      name: "",
-      rating: null,
-    },
-  });
+  const dispatch = useAppDispatch();
 
+  const userId = useAppSelector((state) => state.user.userId);
+  const isCreatingReview = useAppSelector((state) => state.reviews.isCreating);
   const movie = useAppSelector((state) =>
     selectMovieById(state, router.query.id as string)
   );
 
-  const handleSubmit = useCallback(
-    (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      reviewsActions.createReview(values as unknown as Review);
+  const { values, handleChange, resetForm } = useForm({
+    initialValues: {
+      title: "",
+      body: "",
+      name: "",
+      rating: 0,
     },
-    [values]
+  });
+
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+
+      if (values.name) {
+        dispatch(userActions.createUser({ name: values.name }));
+      }
+    },
+    [values.name]
   );
+
+  useEffect(() => {
+    if (userId && values && router.query.id) {
+      const { name, ...props } = values;
+      dispatch(
+        reviewsActions.createReview({
+          ...props,
+          movieId: router.query.id as string,
+          userReviewerId: userId,
+        })
+      );
+      resetForm();
+      router.back();
+    }
+  }, [userId]);
 
   if (!movie) {
     return null;
@@ -62,7 +84,7 @@ function NewMovieReview() {
           <Rating
             value={values.rating}
             name="rating"
-            precision={0.5}
+            disabled={isCreatingReview}
             onChange={(e, rating) => handleChange("rating", rating)}
           />
         </FlexColumn>
@@ -72,7 +94,9 @@ function NewMovieReview() {
             Add a title
           </Text>
           <TextField
+            required
             name="title"
+            disabled={isCreatingReview}
             value={values.title}
             placeholder="What is most important to know?"
             onChange={(e) => handleChange("title", e.target.value)}
@@ -84,7 +108,9 @@ function NewMovieReview() {
             Add a written review
           </Text>
           <TextField
+            required
             multiline
+            disabled={isCreatingReview}
             rows={6}
             name="body"
             value={values.body}
@@ -98,14 +124,21 @@ function NewMovieReview() {
             Choose your public name
           </Text>
           <TextField
+            disabled={isCreatingReview}
             name="name"
+            required
             value={values.name}
             onChange={(e) => handleChange("name", e.target.value)}
           />
         </FlexColumn>
 
         <FlexColumn marginTop={SPACINGS.lg} component="div" alignSelf="end">
-          <Button color="info" type="submit" label="Submit" />
+          <Button
+            type="submit"
+            label="Submit"
+            color="secondary"
+            disabled={isCreatingReview}
+          />
         </FlexColumn>
       </FlexColumn>
     </form>
