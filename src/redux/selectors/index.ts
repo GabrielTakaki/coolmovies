@@ -33,6 +33,6 @@ export const selectRatingAverageById = createSelector(
     }
 
     const totalRating = reviews.reduce((sum, review) => sum + review.rating, 0);
-    return totalRating / reviews.length;
+    return (totalRating / reviews.length).toFixed(2);
   }
 );
