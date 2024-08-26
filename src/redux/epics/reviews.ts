@@ -43,7 +43,8 @@ export const updateReviewEpic: Epic = (
     filter(reviewsActions.updateReview.match),
     switchMap(async (action) => {
       try {
-        const review = await updateReview(action.payload);
+        const { nodeId, ...rest } = action.payload;
+        const review = await updateReview(nodeId as string, rest);
         return reviewsActions.updateOne(review);
       } catch (err) {
         // return reviewsActions.loadError();
