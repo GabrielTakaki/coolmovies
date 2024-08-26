@@ -1,7 +1,7 @@
 import React from "react";
 import { Rating as MuiRating, RatingProps } from "@mui/material";
 import Box from "../layout/Box";
-import { SIZES } from "../../consts/design-system/definitions";
+import { SIZES } from "@consts/design-system/definitions";
 
 type Props = {
   readOnly?: boolean;

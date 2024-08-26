@@ -1,8 +1,8 @@
 import React from "react";
 import List from "../../../components/data-display/List";
-import { useAppSelector } from "../../../redux/store";
+import { useAppSelector } from "@redux/store";
 import MoviesListItem from "./MoviesListItem";
-import { selectMovieIds } from "../../../redux/slices/moviesSlice";
+import { selectMovieIds } from "@redux/slices/moviesSlice";
 
 function MoviesList() {
   const movieIds = useAppSelector(selectMovieIds);

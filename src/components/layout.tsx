@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Header from "./general/Header";
 import Box from "./layout/Box";
-import useMediaQuery from "../hooks/useMediaQuery";
-import { useAppDispatch } from "../redux/store";
-import { movieActions } from "../redux/slices/moviesSlice";
-import { reviewsActions } from "../redux/slices/reviewsSlice";
-import { userActions } from "../redux/slices/userSlice";
+import useMediaQuery from "@hooks/useMediaQuery";
+import { useAppDispatch } from "@redux/store";
+import { movieActions } from "@redux/slices/moviesSlice";
+import { reviewsActions } from "@redux/slices/reviewsSlice";
+import { userActions } from "@redux/slices/userSlice";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();

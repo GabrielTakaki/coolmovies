@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import { client } from "../../core/apolloClient";
-import { Review } from "../../models/Review";
+import { client } from "@core/apolloClient";
+import { Review } from "@models/Review";
 
 const CREATE_REVIEW = gql`
   mutation CreateReview($input: CreateMovieReviewInput!) {

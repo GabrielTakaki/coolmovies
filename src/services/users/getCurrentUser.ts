@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { client } from "../../core/apolloClient";
+import { client } from "@core/apolloClient";
 
 const CURRENT_USER_QUERY = gql`
   query CurrentUser {

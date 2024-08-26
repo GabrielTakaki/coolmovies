@@ -1,17 +1,17 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../../redux/store";
-import FlexRow from "../../../components/layout/FlexRow";
-import FlexColumn from "../../../components/layout/FlexColumn";
-import Text from "../../../components/data-display/Text";
-import { SPACINGS } from "../../../consts/design-system/global-tokens/spacings";
-import Rating from "../../../components/inputs/Rating";
-import Box from "../../../components/layout/Box";
-import Avatar from "../../../components/data-display/Avatar";
-import { selectReviewById } from "../../../redux/slices/reviewsSlice";
-import Button from "../../../components/inputs/Button";
-import useMediaQuery from "../../../hooks/useMediaQuery";
-import Edit from "../../../../public/edit";
+import { useAppSelector } from "@redux/store";
+import FlexRow from "@components/layout/FlexRow";
+import FlexColumn from "@components/layout/FlexColumn";
+import Text from "@components/data-display/Text";
+import { SPACINGS } from "@consts/design-system/global-tokens/spacings";
+import Rating from "@components/inputs/Rating";
+import Box from "@components/layout/Box";
+import Avatar from "@components/data-display/Avatar";
+import { selectReviewById } from "@redux/slices/reviewsSlice";
+import Button from "@components/inputs/Button";
+import useMediaQuery from "@hooks/useMediaQuery";
+import Edit from "@public/edit";
 
 function ReviewListItem({ reviewId }: { reviewId: string }) {
   const router = useRouter();

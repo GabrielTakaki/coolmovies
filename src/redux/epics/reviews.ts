@@ -2,9 +2,9 @@ import { Epic } from "redux-observable";
 import { Observable } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
 import { reviewsActions, SliceAction } from "../slices/reviewsSlice";
-import { getReviews } from "../../services/reviews/getReviews";
-import { updateReview } from "../../services/reviews/updateReview";
-import { createReview } from "../../services/reviews/createReview";
+import { getReviews } from "@services/reviews/getReviews";
+import { updateReview } from "@services/reviews/updateReview";
+import { createReview } from "@services/reviews/createReview";
 
 export const fetchReviewsEpic: Epic = (
   action$: Observable<SliceAction["fetchReviews"]>

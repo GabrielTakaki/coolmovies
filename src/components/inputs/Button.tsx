@@ -1,6 +1,6 @@
 import React from "react";
 import { Button as MuiButton } from "@mui/material";
-import { SIZES, VARIANTS } from "../../consts/design-system/definitions";
+import { SIZES, VARIANTS } from "@consts/design-system/definitions";
 
 type ButtonProps = {
   color?: "primary" | "secondary" | "info";

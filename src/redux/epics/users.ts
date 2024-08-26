@@ -2,8 +2,8 @@ import { Epic } from "redux-observable";
 import { Observable } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
 import { userActions, SliceAction } from "../slices/userSlice";
-import { createUser } from "../../services/users/createUser";
-import { getCurrentUser } from "../../services/users/getCurrentUser";
+import { createUser } from "@services/users/createUser";
+import { getCurrentUser } from "@services/users/getCurrentUser";
 
 export const createUserEpic: Epic = (
   action$: Observable<SliceAction["createUser"]>

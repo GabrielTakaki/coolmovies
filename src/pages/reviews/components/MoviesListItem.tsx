@@ -1,18 +1,18 @@
 import React from "react";
-import { useAppSelector } from "../../../redux/store";
-import { selectMovieById } from "../../../redux/slices/moviesSlice";
-import FlexRow from "../../../components/layout/FlexRow";
-import FlexColumn from "../../../components/layout/FlexColumn";
-import Text from "../../../components/data-display/Text";
-import { SPACINGS } from "../../../consts/design-system/global-tokens/spacings";
-import List from "../../../components/data-display/List";
-import ReviewListItem from "./ReviewListItem";
-import Button from "../../../components/inputs/Button";
 import { useRouter } from "next/router";
+import { useAppSelector } from "@redux/store";
+import { selectMovieById } from "@redux/slices/moviesSlice";
+import FlexRow from "@components/layout/FlexRow";
+import FlexColumn from "@components/layout/FlexColumn";
+import Text from "@components/data-display/Text";
+import { SPACINGS } from "@consts/design-system/global-tokens/spacings";
+import List from "@components/data-display/List";
+import Button from "@components/inputs/Button";
 import {
   selectRatingAverageById,
   selectReviewsByMovieId,
-} from "../../../redux/selectors";
+} from "@redux/selectors";
+import ReviewListItem from "./ReviewListItem";
 
 function MoviesListItem({ movieId }: { movieId: string }) {
   const router = useRouter();

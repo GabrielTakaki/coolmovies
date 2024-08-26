@@ -2,7 +2,7 @@ import { Epic } from "redux-observable";
 import { movieActions, SliceAction } from "../slices/moviesSlice";
 import { Observable } from "rxjs";
 import { filter, switchMap } from "rxjs/operators";
-import { getMovies } from "../../services/movies/getMovies";
+import { getMovies } from "@services/movies/getMovies";
 
 export const fetchMoviesEpic: Epic = (
   action$: Observable<SliceAction["fetchMovies"]>

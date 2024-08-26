@@ -1,8 +1,8 @@
 import React from "react";
 import ReviewForm from "./components/ReviewForm";
 import { useRouter } from "next/router";
-import { useAppSelector } from "../../redux/store";
-import { selectReviewById } from "../../redux/slices/reviewsSlice";
+import { useAppSelector } from "@redux/store";
+import { selectReviewById } from "@redux/slices/reviewsSlice";
 
 function EditReview() {
   const router = useRouter();

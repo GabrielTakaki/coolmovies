@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import FlexRow from "../layout/FlexRow";
 import AnimationIcon from "@mui/icons-material/Animation";
-import { SPACINGS } from "../../consts/design-system/global-tokens/spacings";
+import { SPACINGS } from "@consts/design-system/global-tokens/spacings";
 import Link from "../navigation/Link";
 import { useRouter } from "next/router";
-import useMediaQuery from "../../hooks/useMediaQuery";
+import useMediaQuery from "@hooks/useMediaQuery";
 
 function Header() {
   const router = useRouter();

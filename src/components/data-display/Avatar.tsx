@@ -1,6 +1,6 @@
 import React from "react";
 import { Avatar as MuiAvatar } from "@mui/material";
-import { SIZES } from "../../consts/design-system/definitions";
+import { SIZES } from "@consts/design-system/definitions";
 
 function Avatar({
   src,

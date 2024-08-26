@@ -1,6 +1,6 @@
 import React from "react";
-import Text from "../../components/data-display/Text";
-import FlexColumn from "../../components/layout/FlexColumn";
+import Text from "@components/data-display/Text";
+import FlexColumn from "@components/layout/FlexColumn";
 import MoviesList from "./components/MoviesList";
 
 function Reviews() {

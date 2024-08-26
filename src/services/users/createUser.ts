@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import { client } from "../../core/apolloClient";
+import { client } from "@core/apolloClient";
 
 const CREATE_USER = gql`
   mutation CreateUser($input: CreateUserInput!) {

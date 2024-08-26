@@ -1,6 +1,6 @@
 import { gql } from "@apollo/client";
-import { client } from "../../core/apolloClient";
-import { Movie } from "../../models/Movie";
+import { client } from "@core/apolloClient";
+import { Movie } from "@models/Movie";
 
 const GET_MOVIES = gql`
   query AllMovies {

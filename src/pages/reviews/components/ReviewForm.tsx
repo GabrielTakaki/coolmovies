@@ -1,20 +1,17 @@
 import React, { useCallback } from "react";
 import { useRouter } from "next/router";
-import { useAppDispatch, useAppSelector } from "../../../redux/store";
-import { selectMovieById } from "../../../redux/slices/moviesSlice";
-import useForm from "../../../hooks/useForm";
-import {
-  reviewsActions,
-  selectReviewById,
-} from "../../../redux/slices/reviewsSlice";
-import FlexColumn from "../../../components/layout/FlexColumn";
-import { SPACINGS } from "../../../consts/design-system/global-tokens/spacings";
-import Text from "../../../components/data-display/Text";
-import FlexRow from "../../../components/layout/FlexRow";
-import Divider from "../../../components/data-display/Divider";
-import Rating from "../../../components/inputs/Rating";
-import TextField from "../../../components/inputs/TextField";
-import Button from "../../../components/inputs/Button";
+import { useAppDispatch, useAppSelector } from "@redux/store";
+import { selectMovieById } from "@redux/slices/moviesSlice";
+import useForm from "@hooks/useForm";
+import { reviewsActions, selectReviewById } from "@redux/slices/reviewsSlice";
+import FlexColumn from "@components/layout/FlexColumn";
+import { SPACINGS } from "@consts/design-system/global-tokens/spacings";
+import Text from "@components/data-display/Text";
+import FlexRow from "@components/layout/FlexRow";
+import Divider from "@components/data-display/Divider";
+import Rating from "@components/inputs/Rating";
+import TextField from "@components/inputs/TextField";
+import Button from "@components/inputs/Button";
 
 function ReviewForm({
   method,

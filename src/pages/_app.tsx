@@ -3,12 +3,12 @@ import type { AppProps } from "next/app";
 import React, { FC, useState } from "react";
 import { Provider as ReduxProvider } from "react-redux";
 import Head from "next/head";
-import { createStore } from "../redux/store";
+import { createStore } from "@redux/store";
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { SYSTEM_COLORS } from "../consts/design-system/global-tokens/colors";
+import { SYSTEM_COLORS } from "@consts/design-system/global-tokens/colors";
 import Layout from "../components/layout";
-import { client } from "../core/apolloClient";
+import { client } from "@core/apolloClient";
 
 const theme = createTheme({
   palette: {

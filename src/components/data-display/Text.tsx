@@ -1,11 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
-import {
-  COLORS,
-  LEVELS,
-  WEIGHTS,
-} from "../../consts/design-system/definitions";
-import { SYSTEM_COLORS } from "../../consts/design-system/global-tokens/colors";
+import { COLORS, LEVELS, WEIGHTS } from "@consts/design-system/definitions";
+import { SYSTEM_COLORS } from "@consts/design-system/global-tokens/colors";
 
 type TextProps = {
   variant?: "h6" | "caption" | "body1" | "subtitle1" | "subtitle2";
