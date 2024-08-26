@@ -4,6 +4,7 @@ export interface Review {
   rating: number;
   title: string;
   movieId: string;
+  nodeId?: string;
   userReviewerId: string;
   userByUserReviewerId?: {
     id: string;
