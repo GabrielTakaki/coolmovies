@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { useAppSelector } from "../../../redux/store";
 import { selectMovieById } from "../../../redux/slices/moviesSlice";
 import FlexRow from "../../../components/layout/FlexRow";
@@ -24,10 +24,6 @@ function MoviesListItem({ movieId }: { movieId: string }) {
   const reviewsIdsByMovie = useAppSelector((state) =>
     selectReviewsByMovieId(state, movieId)
   );
-
-  const handleAddReviewClick = useCallback(() => {
-    router.push(`/reviews/movies/${movieId}/new`);
-  }, [movieId]);
 
   if (!movie) {
     return null;
@@ -55,7 +51,7 @@ function MoviesListItem({ movieId }: { movieId: string }) {
         <FlexRow component="div" alignSelf="end" marginTop={SPACINGS.lg}>
           <Button
             label="Add Review"
-            onClick={handleAddReviewClick}
+            onClick={() => router.push(`/reviews/movies/${movieId}/new`)}
             color="secondary"
           />
         </FlexRow>
