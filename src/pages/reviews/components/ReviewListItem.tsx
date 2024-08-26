@@ -11,6 +11,7 @@ import Avatar from "../../../components/data-display/Avatar";
 import { selectReviewById } from "../../../redux/slices/reviewsSlice";
 import Button from "../../../components/inputs/Button";
 import useMediaQuery from "../../../hooks/useMediaQuery";
+import Edit from "../../../../public/edit";
 
 function ReviewListItem({ reviewId }: { reviewId: string }) {
   const router = useRouter();
@@ -63,9 +64,9 @@ function ReviewListItem({ reviewId }: { reviewId: string }) {
           </FlexRow>
           {userId === review.userReviewerId && (
             <Button
-              label="Edit"
+              label={<Edit />}
               color="primary"
-              variant="outlined"
+              variant="text"
               size="small"
               onClick={() => router.push(`/reviews/${reviewId}`)}
             />

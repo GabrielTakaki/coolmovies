@@ -8,7 +8,7 @@ type ButtonProps = {
   disabled?: boolean;
   onClick?: () => void;
   size?: SIZES;
-  label: string;
+  label: string | React.ReactNode;
   icon?: React.ReactNode;
   iconPosition?: "trailing" | "leading";
   type?: "button" | "submit";
