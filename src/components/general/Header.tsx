@@ -4,9 +4,12 @@ import AnimationIcon from "@mui/icons-material/Animation";
 import { SPACINGS } from "../../consts/design-system/global-tokens/spacings";
 import Link from "../navigation/Link";
 import { useRouter } from "next/router";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 function Header() {
   const router = useRouter();
+  const isDesktop = useMediaQuery("md");
+
   const handleClick = useCallback(() => {
     router.back();
   }, []);
@@ -14,7 +17,7 @@ function Header() {
   return (
     <FlexRow
       component="header"
-      padding="12px 40px"
+      padding={isDesktop ? "12px 40px" : "12px 20px"}
       alignItems="center"
       width="100%"
       borderBottom="1px solid #E5E8EB"
