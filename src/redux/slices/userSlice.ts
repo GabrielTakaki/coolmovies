@@ -2,17 +2,24 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
   initialState: {
-    userId: "",
+    id: "",
+    name: "",
     isCreating: false,
+    isFetching: false,
   },
   name: "user",
   reducers: {
+    fetchCurrentUser: (state) => {
+      state.isFetching = true;
+    },
     createUser: (state, action: PayloadAction<{ name: string }>) => {
       state.isCreating = true;
     },
     setUser: (state, action) => {
-      state.userId = action.payload.id;
+      state.id = action.payload.id;
+      state.name = action.payload.name;
       state.isCreating = false;
+      state.isFetching = false;
     },
   },
 });
