@@ -5,6 +5,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import { useAppDispatch } from "../redux/store";
 import { movieActions } from "../redux/slices/moviesSlice";
 import { reviewsActions } from "../redux/slices/reviewsSlice";
+import { userActions } from "../redux/slices/userSlice";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
@@ -13,11 +14,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     dispatch(movieActions.fetchMovies());
     dispatch(reviewsActions.fetchReviews());
+    dispatch(userActions.fetchCurrentUser());
   }, [dispatch]);
+
   return (
     <>
       <Header />
-      <Box component="main" margin={isDesktop ? "20px 160px" : "20px 40px"}>
+      <Box component="main" margin={isDesktop ? "20px 160px" : "20px"}>
         {children}
       </Box>
     </>
