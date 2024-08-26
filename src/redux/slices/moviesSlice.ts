@@ -19,12 +19,15 @@ function normalizeMovie(movie: Movie): MovieAdapter {
 }
 
 export const moviesSlice = createSlice({
-  initialState: moviesAdapter.getInitialState(),
+  initialState: { ...moviesAdapter.getInitialState(), isRetrieving: false },
   name: "movies",
   reducers: {
-    fetchMovies: () => {},
+    fetchMovies: (state) => {
+      state.isRetrieving = true;
+    },
     setMovies: (state, action: PayloadAction<{ nodes: Movie[] }>) => {
       const movies = action.payload.nodes.map(normalizeMovie);
+      state.isRetrieving = false;
       moviesAdapter.setAll(state, movies);
     },
     clearMovies: (state) => {
