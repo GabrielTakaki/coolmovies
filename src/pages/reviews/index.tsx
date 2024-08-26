@@ -6,7 +6,9 @@ import MoviesList from "./components/MoviesList";
 function Reviews() {
   return (
     <FlexColumn component="section">
-      <Text variant="h6">Reviews</Text>
+      <Text variant="h6" weight="semibold">
+        Reviews
+      </Text>
       <MoviesList />
     </FlexColumn>
   );
