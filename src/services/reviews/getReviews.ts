@@ -10,6 +10,7 @@ const GET_REVIEWS = gql`
         title
         body
         rating
+        nodeId
         movieId
         userReviewerId
         userByUserReviewerId {
