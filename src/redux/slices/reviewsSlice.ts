@@ -12,17 +12,24 @@ export const reviewsSlice = createSlice({
     ...reviewsAdapter.getInitialState(),
     isCreating: false,
     isUpdating: false,
+    isRetrieving: false,
   },
   name: "reviews",
   reducers: {
-    fetchReviews: () => {},
+    fetchReviews: (state) => {
+      state.isRetrieving = true;
+    },
     createReview: (state, action: PayloadAction<Omit<Review, "id">>) => {
       state.isCreating = true;
     },
-    updateReview: (state, action: PayloadAction<Review>) => {
+    updateReview: (
+      state,
+      action: PayloadAction<Omit<Review, "userByUserReviewerId">>
+    ) => {
       state.isUpdating = true;
     },
     setReviews: (state, action: PayloadAction<{ nodes: Review[] }>) => {
+      state.isRetrieving = false;
       reviewsAdapter.setAll(state, action.payload.nodes);
     },
     updateOne: (state, action: PayloadAction<Review>) => {
