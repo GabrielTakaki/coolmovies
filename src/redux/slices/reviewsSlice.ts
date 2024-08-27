@@ -3,7 +3,7 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { Review } from "../../models/Review";
+import { Review } from "@models/Review";
 
 const reviewsAdapter = createEntityAdapter<Review>();
 

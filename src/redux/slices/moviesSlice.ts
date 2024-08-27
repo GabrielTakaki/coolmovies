@@ -3,7 +3,7 @@ import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { Movie } from "../../models/Movie";
+import { Movie } from "@models/Movie";
 
 interface MovieAdapter extends Omit<Movie, "movieReviewsByMovieId"> {
   movieReviewsByMovieId: string[];
